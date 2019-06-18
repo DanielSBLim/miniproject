@@ -10,7 +10,7 @@ import myAlgrithm.*;
 import db.*;
 
 public class AlgorithmProject extends JFrame {
-
+	
 	// 상단
 	private MainMenuPanel pnlTop = new MainMenuPanel();
 
