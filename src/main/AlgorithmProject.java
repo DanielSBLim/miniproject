@@ -5,8 +5,8 @@ import java.util.ArrayList;
 
 import javax.swing.JFrame;
 
-import layout.*;
 import myAlgrithm.*;
+import problemLayout.*;
 import db.*;
 
 public class AlgorithmProject extends JFrame {
@@ -63,6 +63,9 @@ public class AlgorithmProject extends JFrame {
 
 	public void dtoSetting() {
 		DTO = new MiniProjcetDTO();
+	}
+	public MiniProjcetDTO dtoGet() {
+		return DTO;
 	}
 
 	private void initWindowSetting() {
@@ -219,6 +222,7 @@ public class AlgorithmProject extends JFrame {
 				pnlCenter.setlblMain1("합격입니다 다음등급으로");
 				pnlCenter.setlblMain2("합격입니다 다음등급으로");
 				pnlTop.middleproblemADD();
+				DTO.setFlagbasicJumsu(1);
 			} else {
 				pnlCenter.setlblMain1("불합격 다시 할려면");
 				pnlCenter.setlblMain2("중급 버튼 후 Check");
@@ -266,6 +270,7 @@ public class AlgorithmProject extends JFrame {
 			if (DTO.getMiddleJumsu() >= 3) {
 				pnlCenter.setlblMain1("합격입니다 다음등급으로");
 				pnlCenter.setlblMain2("합격입니다 다음등급으로");
+				DTO.setFlagmiddleJumsu(1);
 				pnlTop.highproblemADD();
 			} else {
 				pnlCenter.setlblMain1("불합격 다시 할려면");
@@ -325,10 +330,10 @@ public class AlgorithmProject extends JFrame {
 			if (DTO.getHighJumsu() >= 3) {
 				pnlCenter.setlblMain1("합격입니다");
 				pnlCenter.setlblMain2("합격입니다 고생하셨습니다");
-				pnlTop.middleproblemADD();
+				DTO.setFlaghighJumsu(1);
 			} else {
 				pnlCenter.setlblMain1("불합격 다시 할려면");
-				pnlCenter.setlblMain2("초급 버튼 후 Check");
+				pnlCenter.setlblMain2("고급 버튼 후 Check");
 			}
 		}
 

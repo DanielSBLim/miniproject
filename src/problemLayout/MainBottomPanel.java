@@ -1,4 +1,4 @@
-package layout;
+package problemLayout;
 
 import java.awt.Color;
 import java.awt.Dimension;
