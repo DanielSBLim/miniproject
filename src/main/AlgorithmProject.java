@@ -188,7 +188,7 @@ public class AlgorithmProject extends JFrame {
 		
 		System.out.println(twoComtotal);
 
-		if (twoComtotal <= 5) {
+		if (twoComtotal < 5) {
 			twoComtotal++;
 			twoComplement = new TwoComplement(twoComplementInputNumber, twoComplementInputType);
 
@@ -235,7 +235,7 @@ public class AlgorithmProject extends JFrame {
 		
 		System.out.println(stacktotal);
 
-		if (stacktotal <= 5) {
+		if (stacktotal < 5) {
 			stacktotal++;
 			stack = new Stack(stackInputNumber);
 
@@ -295,7 +295,7 @@ public class AlgorithmProject extends JFrame {
 			DTO.setHighJumsu(4);
 		}
 		
-		if (lrutotal <= 5) {
+		if (lrutotal < 5) {
 			lrutotal++;
 			lru = new MyLRU(lruInputNumber, lruInputCash);
 
