@@ -16,7 +16,6 @@ import javax.swing.JPanel;
 //최상단 작업
 
 public class MainMenuPanel extends JPanel {
-
 	private JPanel pnlGrade = new JPanel(new GridLayout(1, 3));
 	private JButton[] btnsGradeList = { new JButton(), new JButton(), new JButton() };
 
