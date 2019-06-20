@@ -15,7 +15,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import myValue.*;
 
-public class LoginID extends JPanel {
+public class LoginPW extends JPanel {
 	
 	//Center
 	JPanel pnlmain = new JPanel(new GridLayout(4, 1));
@@ -32,19 +32,19 @@ public class LoginID extends JPanel {
 	JPanel pnltitle = new JPanel(new GridLayout(1, 1));
 	JLabel lblTitleimage = new JLabel("타이틀 이미지 들어감", JLabel.CENTER);
 	//second
-	JPanel pnlIDWrite = new JPanel(new BorderLayout());
-	JLabel lblID = new JLabel("ID", JLabel.LEFT);
-	JLabel lblIDERR = new JLabel(" ", JLabel.RIGHT);
-	JTextField tfIDWrite = new JTextField();
-//	JLabel lblIDERR = new JLabel(" id를 제대로 입력하세요", JLabel.CENTER);
+	JPanel pnlPWWrite = new JPanel(new BorderLayout());
+	JLabel lblPW = new JLabel("PW", JLabel.LEFT);
+	JLabel lblPWERR = new JLabel(" ", JLabel.RIGHT);
+//	JLabel lblPWERR = new JLabel("PW를 제대로 입력하세요", JLabel.RIGHT);
+	JTextField tfPWWrite = new JTextField();
 	
 	// 나머지 빈공간 쓸만큼만 할당하고 주석처리해서 어디 위치인지 선정하기.
-	// 0, 1은 아이디뒤에 빈 gird 내역 
+	// 0, 1은 pw뒤에 빈 gird 내역 
 	// 2, 3은 id 기입할때 동쪽 서쪽 빈공간
 	JPanel[] blink = { new JPanel(), new JPanel()
 			, new JPanel(), new JPanel()};
 
-	public LoginID(){
+	public LoginPW(){
 		super(new BorderLayout());
 		addBeckGroundPnl();
 		addpnlMenuPnl();
@@ -60,7 +60,7 @@ public class LoginID extends JPanel {
 	
 	void addpnlMenuPnl() {
 		pnlmain.add(pnltitle);
-		pnlmain.add(pnlIDWrite);
+		pnlmain.add(pnlPWWrite);
 		pnlmain.add(blink[0]);
 		pnlmain.add(blink[1]);
 	}
@@ -96,21 +96,21 @@ public class LoginID extends JPanel {
 		pnltitle.add(lblTitleimage);
 		
 		//second 
-		pnlIDWrite.setBackground(Color.white);
+		pnlPWWrite.setBackground(Color.white);
 			//idLabel
-		lblID.setFont(new Font("Segoe UI", Font.BOLD, 30));
+		lblPW.setFont(new Font("Segoe UI", Font.BOLD, 30));
 			//lblIDERR Label
-		lblIDERR.setFont(new Font("맑은고딕", Font.PLAIN, 20));
-		lblIDERR.setForeground(Color.red);
+		lblPWERR.setFont(new Font("맑은고딕", Font.PLAIN, 20));
+		lblPWERR.setForeground(Color.red);
 			//blink Panel
 		blink[2].setBackground(Color.white);
 		blink[3].setBackground(Color.white);
 		
-		pnlIDWrite.add(lblID, BorderLayout.NORTH);
-		pnlIDWrite.add(tfIDWrite, BorderLayout.CENTER);
-		pnlIDWrite.add(lblIDERR, BorderLayout.SOUTH);
-		pnlIDWrite.add(blink[2], BorderLayout.EAST);
-		pnlIDWrite.add(blink[3], BorderLayout.WEST);
+		pnlPWWrite.add(lblPW, BorderLayout.NORTH);
+		pnlPWWrite.add(tfPWWrite, BorderLayout.CENTER);
+		pnlPWWrite.add(lblPWERR, BorderLayout.SOUTH);
+		pnlPWWrite.add(blink[2], BorderLayout.EAST);
+		pnlPWWrite.add(blink[3], BorderLayout.WEST);
 		
 	}
 	
@@ -119,7 +119,7 @@ public class LoginID extends JPanel {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("login 클래스안에서 생성 동작함");
+				System.out.println("pw 클래스안에서 생성 동작함");
 				if(userActionListener != null) {
 					userActionListener.onClickCreat();
 				}
@@ -131,7 +131,7 @@ public class LoginID extends JPanel {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("login 클래스안에서 다음 동작함");
+				System.out.println("pw 클래스안에서 다음 동작함");
 				if(userActionListener != null) {
 					userActionListener.onClickNext();
 				}
@@ -152,19 +152,12 @@ public class LoginID extends JPanel {
 	}
 	
 	public void errVis() {
-		lblIDERR.setText(" id를 제대로 입력하세요");
+		lblPWERR.setText(" PW를 제대로 입력하세요");
 	}
-	public String getIDTextFlied() {
+	public String getPWTextFlied() {
 		
-		return tfIDWrite.getText();
+		return tfPWWrite.getText();
 	}
-	public void clrerrVis() {
-		lblIDERR.setText(" ");
-	}
-	public void clrtext() {
-		tfIDWrite.setText("");
-	}
-	
 
 
 }
