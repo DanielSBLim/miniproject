@@ -8,7 +8,6 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import membershipLayout.*;
-import myValue.MyApi;
 
 public class MembershipProject extends JFrame {
 
@@ -51,15 +50,16 @@ public class MembershipProject extends JFrame {
 
 	private void setEvent() {
 		loginID.setUserActionListener(new LoginID.UserActionListener() {
-			
+
 			@Override
 			public void onClickNext() {
 				System.out.println("id 출력");
-				if(loginID.getIDTextFlied().equals("")) {
+				if (loginID.getIDTextFlied().equals("")) {
 					loginID.errVis();
 					loginID.setFoucesID();
-				} else if(false) {
-					//--------------------------------------------------------------------------------------문제 내역
+				} else if (false) {
+					// --------------------------------------------------------------------------------------문제
+					// 내역
 				} else {
 
 					loginID.clrerrVis();
@@ -70,9 +70,9 @@ public class MembershipProject extends JFrame {
 					revalidate();
 					repaint();
 				}
-				
+
 			}
-			
+
 			@Override
 			public void onClickCreat() {
 				getContentPane().remove(loginID);
@@ -80,34 +80,33 @@ public class MembershipProject extends JFrame {
 				creativeMember.setFoucesID();
 				revalidate();
 				repaint();
-				
+
 			}
 		});
 		loginPW.setUserActionListener(new LoginPW.UserActionListener() {
-			
+
 			@Override
 			public void onClickNext() {
 				System.out.println("다음 출력");
-				if(loginPW.getPWTextFlied().equals("")) {
+				if (loginPW.getPWTextFlied().equals("")) {
 					loginPW.errVis();
 					loginPW.setFoucesPW();
-				} else if(false) {
-					//문제 내역
+				} else if (false) {
+					// --------------------------------------------------------------------------------------문제
+					// 내역
 				} else {
-					
+
 					loginPW.clrerrVis();
 					loginPW.clrtext();
-					
+
 					remove(loginPW);
 					add(mainMember);
 					revalidate();
 					repaint();
 				}
-				
+
 			}
-				
-			
-			
+
 			@Override
 			public void onClickCreat() {
 				remove(loginPW);
@@ -115,65 +114,87 @@ public class MembershipProject extends JFrame {
 				creativeMember.setFoucesID();
 				revalidate();
 				repaint();
-				
+
 			}
 		});
 		upDateMember.setUserActionListener(new UpDateMember.UserActionListener() {
-			
+
 			@Override
 			public void onClickRemove() {
 				remove(upDateMember);
 				add(delMember);
 				revalidate();
 				repaint();
-				
-				//------------------------------------------------------------------------------------ 쓰레드 넣기
+
+				// ------------------------------------------------------------------------------------
+				// 쓰레드 넣기
 				remove(delMember);
 				add(loginID);
 				loginID.setFoucesID();
 				revalidate();
 				repaint();
-				
+
 			}
-			
-			@Override
-			public void onClickNext() {
-				remove(upDateMember);
-				add(mainMember);
-				revalidate();
-				repaint();
-				
-			}
-		});
-		
-		
-		
-		creativeMember.setUserActionListener(new CreativeMember.UserActionListener() {
-			
+
 			@Override
 			public void onClickNext() {
 				creativeMember.errVisclr();
 				int errFlag = 0;
 
-				if(creativeMember.getNickTextFlied().equals("")) {
+				if (upDateMember.getNickTextFlied().equals("")) {
+					upDateMember.errVisNick();
+					upDateMember.setFoucesNick();
+					errFlag = 1;
+				}
+				if (upDateMember.getPWTextFlied().equals("")) {
+					upDateMember.errVisPW();
+					upDateMember.setFoucesPW();
+					errFlag = 1;
+				}
+				if (upDateMember.getIDTextFlied().equals("")) {
+					upDateMember.errVisID();
+					upDateMember.setFoucesID();
+					errFlag = 1;
+				}
+
+				if (errFlag == 0) {
+					upDateMember.errVisclr();
+					upDateMember.tFdclr();
+					loginID.clrtext();
+					remove(upDateMember);
+					add(mainMember);
+					revalidate();
+					repaint();
+				}
+			}
+		});
+
+		creativeMember.setUserActionListener(new CreativeMember.UserActionListener() {
+
+			@Override
+			public void onClickNext() {
+				creativeMember.errVisclr();
+				int errFlag = 0;
+
+				if (creativeMember.getNickTextFlied().equals("")) {
 					creativeMember.errVisNick();
 					creativeMember.setFoucesNick();
 					errFlag = 1;
-				} 
-				if(creativeMember.getPWTextFlied().equals("")) {
+				}
+				if (creativeMember.getPWTextFlied().equals("")) {
 					creativeMember.errVisPW();
 					creativeMember.setFoucesPW();
 					errFlag = 1;
-				} 
-				if(creativeMember.getIDTextFlied().equals("")) {
+				}
+				if (creativeMember.getIDTextFlied().equals("")) {
 					creativeMember.errVisID();
 					creativeMember.setFoucesID();
 					errFlag = 1;
-				} 
-				
-				if(errFlag == 0) {
+				}
+
+				if (errFlag == 0) {
 					creativeMember.errVisclr();
-					creativeMember.textFdclr();
+					creativeMember.tFdclr();
 					loginID.clrtext();
 					remove(creativeMember);
 					add(loginID);
@@ -182,21 +203,22 @@ public class MembershipProject extends JFrame {
 					repaint();
 				}
 			}
-			
+
 			@Override
 			public void onClickNew() {
-				creativeMember.setFoucesID();
+				creativeMember.errVisclr();
 				creativeMember.allreset();
-				
+				creativeMember.setFoucesID();
+
 			}
 		});
-		
+
 		mainMember.setUserActionListener(new MainMember.UserActionListener() {
 			@Override
 			public void onClickStart() {
-				new AlgorithmProject(); 
+				new AlgorithmProject();
 				setVisible(false);
-				
+
 			}
 
 			@Override
@@ -207,17 +229,11 @@ public class MembershipProject extends JFrame {
 				repaint();
 			}
 		});
-		
-		 
-		
+
 	}
 
 	void start() {
 		add(loginID, BorderLayout.CENTER);
-		
+
 	}
-//	void testPnladd() {
-//	
-//
-//	}
 }

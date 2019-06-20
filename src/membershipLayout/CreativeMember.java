@@ -247,7 +247,7 @@ public class CreativeMember extends JPanel {
 		lblPWERR.setText(" ");
 		lblNickERR.setText(" ");
 	}
-	public void textFdclr() {
+	public void tFdclr() {
 		tfIDWrite.setText(" ");
 		tfPWWrite.setText(" ");
 		tfNickWrite.setText(" ");

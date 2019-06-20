@@ -195,5 +195,64 @@ public class UpDateMember extends JPanel {
 
 		void onClickRemove();
 	}
+	
+	public void allreset() {
+		tfIDWrite.setText("");
+		tfPWWrite.setText("");
+		tfNickWrite.setText("");
+	}
+
+	public void setFoucesID() {
+		tfIDWrite.requestFocus();
+		tfIDWrite.setFocusable(true);
+	}
+
+	public void setFoucesPW() {
+		tfPWWrite.requestFocus();
+		tfPWWrite.setFocusable(true);
+	}
+
+	public void setFoucesNick() {
+		tfNickWrite.requestFocus();
+		tfNickWrite.setFocusable(true);
+	}
+
+	public String getIDTextFlied() {
+
+		return tfIDWrite.getText();
+	}
+
+	public String getPWTextFlied() {
+
+		return tfPWWrite.getText();
+	}
+
+	public String getNickTextFlied() {
+
+		return tfNickWrite.getText();
+	}
+
+	public void errVisID() {
+		lblIDERR.setText(" ID를 제대로 입력하세요");
+	}
+
+	public void errVisPW() {
+		lblPWERR.setText(" PW를 제대로 입력하세요");
+	}
+
+	public void errVisNick() {
+		lblNickERR.setText(" Nick를 제대로 입력하세요");
+	}
+
+	public void errVisclr() {
+		lblIDERR.setText(" ");
+		lblPWERR.setText(" ");
+		lblNickERR.setText(" ");
+	}
+	public void tFdclr() {
+		tfIDWrite.setText(" ");
+		tfPWWrite.setText(" ");
+		tfNickWrite.setText(" ");
+	}
 
 }
