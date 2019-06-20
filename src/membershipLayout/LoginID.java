@@ -158,6 +158,12 @@ public class LoginID extends JPanel {
 		
 		return tfIDWrite.getText();
 	}
+	
+	public void setFoucesID() {
+		tfIDWrite.requestFocus();
+		tfIDWrite.setFocusable(true);
+	}
+	
 	public void clrerrVis() {
 		lblIDERR.setText(" ");
 	}

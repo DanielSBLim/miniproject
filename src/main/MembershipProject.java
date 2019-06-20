@@ -23,9 +23,9 @@ public class MembershipProject extends JFrame {
 	MembershipProject() {
 		super("membership");
 		initViews();
-		initWindowSetting();
 		setEvent();
 		start();
+		initWindowSetting();
 	}
 
 	void initViews() {
@@ -57,14 +57,16 @@ public class MembershipProject extends JFrame {
 				System.out.println("id 출력");
 				if(loginID.getIDTextFlied().equals("")) {
 					loginID.errVis();
+					loginID.setFoucesID();
 				} else if(false) {
 					//--------------------------------------------------------------------------------------문제 내역
 				} else {
+
 					loginID.clrerrVis();
 					loginID.clrtext();
-					
 					remove(loginID);
 					add(loginPW);
+					loginPW.setFoucesPW();
 					revalidate();
 					repaint();
 				}
@@ -75,6 +77,7 @@ public class MembershipProject extends JFrame {
 			public void onClickCreat() {
 				getContentPane().remove(loginID);
 				getContentPane().add(creativeMember);
+				creativeMember.setFoucesID();
 				revalidate();
 				repaint();
 				
@@ -87,9 +90,14 @@ public class MembershipProject extends JFrame {
 				System.out.println("다음 출력");
 				if(loginPW.getPWTextFlied().equals("")) {
 					loginPW.errVis();
+					loginPW.setFoucesPW();
 				} else if(false) {
 					//문제 내역
 				} else {
+					
+					loginPW.clrerrVis();
+					loginPW.clrtext();
+					
 					remove(loginPW);
 					add(mainMember);
 					revalidate();
@@ -104,6 +112,7 @@ public class MembershipProject extends JFrame {
 			public void onClickCreat() {
 				remove(loginPW);
 				add(creativeMember);
+				creativeMember.setFoucesID();
 				revalidate();
 				repaint();
 				
@@ -121,6 +130,7 @@ public class MembershipProject extends JFrame {
 				//------------------------------------------------------------------------------------ 쓰레드 넣기
 				remove(delMember);
 				add(loginID);
+				loginID.setFoucesID();
 				revalidate();
 				repaint();
 				
@@ -136,17 +146,47 @@ public class MembershipProject extends JFrame {
 			}
 		});
 		
+		
+		
 		creativeMember.setUserActionListener(new CreativeMember.UserActionListener() {
 			
 			@Override
 			public void onClickNext() {
-				// TODO Auto-generated method stub
+				creativeMember.errVisclr();
+				int errFlag = 0;
+
+				if(creativeMember.getNickTextFlied().equals("")) {
+					creativeMember.errVisNick();
+					creativeMember.setFoucesNick();
+					errFlag = 1;
+				} 
+				if(creativeMember.getPWTextFlied().equals("")) {
+					creativeMember.errVisPW();
+					creativeMember.setFoucesPW();
+					errFlag = 1;
+				} 
+				if(creativeMember.getIDTextFlied().equals("")) {
+					creativeMember.errVisID();
+					creativeMember.setFoucesID();
+					errFlag = 1;
+				} 
 				
+				if(errFlag == 0) {
+					creativeMember.errVisclr();
+					creativeMember.textFdclr();
+					loginID.clrtext();
+					remove(creativeMember);
+					add(loginID);
+					loginID.setFoucesID();
+					revalidate();
+					repaint();
+				}
 			}
 			
 			@Override
 			public void onClickNew() {
-				// TODO Auto-generated method stub
+				creativeMember.setFoucesID();
+				creativeMember.allreset();
 				
 			}
 		});

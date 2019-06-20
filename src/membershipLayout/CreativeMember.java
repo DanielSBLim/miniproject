@@ -95,7 +95,6 @@ public class CreativeMember extends JPanel {
 		btnNext.setForeground(MyColor.lightBlue);
 		btnNext.setFont(new Font("굴림체", Font.BOLD, 20));
 
-
 		pnlMenu.add(btnCreateId, BorderLayout.WEST);
 		pnlMenu.add(btnNext, BorderLayout.EAST);
 
@@ -121,7 +120,7 @@ public class CreativeMember extends JPanel {
 		pnlIDWrite.add(lblIDERR, BorderLayout.SOUTH);
 		pnlIDWrite.add(blink[0], BorderLayout.EAST);
 		pnlIDWrite.add(blink[1], BorderLayout.WEST);
-		
+
 		// Third
 		pnlPWWrite.setBackground(Color.white);
 		// idLabel
@@ -138,8 +137,7 @@ public class CreativeMember extends JPanel {
 		pnlPWWrite.add(lblPWERR, BorderLayout.SOUTH);
 		pnlPWWrite.add(blink[2], BorderLayout.EAST);
 		pnlPWWrite.add(blink[3], BorderLayout.WEST);
-		
-		
+
 		// fourth
 		pnlNicklWrite.setBackground(Color.white);
 		// idLabel
@@ -195,5 +193,65 @@ public class CreativeMember extends JPanel {
 
 		void onClickNew();
 	}
+
+	public void allreset() {
+		tfIDWrite.setText("");
+		tfPWWrite.setText("");
+		tfNickWrite.setText("");
+	}
+
+	public void setFoucesID() {
+		tfIDWrite.requestFocus();
+		tfIDWrite.setFocusable(true);
+	}
+
+	public void setFoucesPW() {
+		tfPWWrite.requestFocus();
+		tfPWWrite.setFocusable(true);
+	}
+
+	public void setFoucesNick() {
+		tfNickWrite.requestFocus();
+		tfNickWrite.setFocusable(true);
+	}
+
+	public String getIDTextFlied() {
+
+		return tfIDWrite.getText();
+	}
+
+	public String getPWTextFlied() {
+
+		return tfPWWrite.getText();
+	}
+
+	public String getNickTextFlied() {
+
+		return tfNickWrite.getText();
+	}
+
+	public void errVisID() {
+		lblIDERR.setText(" ID를 제대로 입력하세요");
+	}
+
+	public void errVisPW() {
+		lblPWERR.setText(" PW를 제대로 입력하세요");
+	}
+
+	public void errVisNick() {
+		lblNickERR.setText(" Nick를 제대로 입력하세요");
+	}
+
+	public void errVisclr() {
+		lblIDERR.setText(" ");
+		lblPWERR.setText(" ");
+		lblNickERR.setText(" ");
+	}
+	public void textFdclr() {
+		tfIDWrite.setText(" ");
+		tfPWWrite.setText(" ");
+		tfNickWrite.setText(" ");
+	}
+	
 
 }
