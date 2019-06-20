@@ -138,10 +138,14 @@ public class MembershipProject extends JFrame {
 
 			@Override
 			public void onClickNext() {
-				creativeMember.errVisclr();
+				upDateMember.errVisclr();
 				int errFlag = 0;
 
 				if (upDateMember.getNickTextFlied().equals("")) {
+					upDateMember.errVisNick();
+					upDateMember.setFoucesNick();
+					errFlag = 1;
+				} else if (upDateMember.getNickTextFlied().contains(" ")) {
 					upDateMember.errVisNick();
 					upDateMember.setFoucesNick();
 					errFlag = 1;
@@ -150,8 +154,16 @@ public class MembershipProject extends JFrame {
 					upDateMember.errVisPW();
 					upDateMember.setFoucesPW();
 					errFlag = 1;
+				} else if (upDateMember.getPWTextFlied().contains(" ")) {
+					upDateMember.errVisPW();
+					upDateMember.setFoucesPW();
+					errFlag = 1;
 				}
 				if (upDateMember.getIDTextFlied().equals("")) {
+					upDateMember.errVisID();
+					upDateMember.setFoucesID();
+					errFlag = 1;
+				} else if (upDateMember.getIDTextFlied().contains(" ")) {
 					upDateMember.errVisID();
 					upDateMember.setFoucesID();
 					errFlag = 1;
@@ -180,8 +192,17 @@ public class MembershipProject extends JFrame {
 					creativeMember.errVisNick();
 					creativeMember.setFoucesNick();
 					errFlag = 1;
+				} else if (creativeMember.getNickTextFlied().contains(" ")) {
+					creativeMember.errVisNick();
+					creativeMember.setFoucesNick();
+					errFlag = 1;
 				}
+				
 				if (creativeMember.getPWTextFlied().equals("")) {
+					creativeMember.errVisPW();
+					creativeMember.setFoucesPW();
+					errFlag = 1;
+				} else if (creativeMember.getPWTextFlied().contains(" ")) {
 					creativeMember.errVisPW();
 					creativeMember.setFoucesPW();
 					errFlag = 1;
@@ -190,8 +211,11 @@ public class MembershipProject extends JFrame {
 					creativeMember.errVisID();
 					creativeMember.setFoucesID();
 					errFlag = 1;
+				} else if (creativeMember.getIDTextFlied().contains(" ")) {
+					creativeMember.errVisID();
+					creativeMember.setFoucesID();
+					errFlag = 1;
 				}
-
 				if (errFlag == 0) {
 					creativeMember.errVisclr();
 					creativeMember.tFdclr();
