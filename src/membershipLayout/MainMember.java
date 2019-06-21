@@ -29,7 +29,7 @@ public class MainMember extends JPanel {
 
 	// first
 	JPanel pnltitle = new JPanel(new GridLayout(1, 1));
-	JLabel lblTitleimage = new JLabel("타이틀 이미지 들어감", JLabel.CENTER);
+	JLabel lblTitleimage = new JLabel("", JLabel.CENTER);
 	// second
 	JPanel pnlIDWrite = new JPanel(new FlowLayout());
 	JLabel lblNick = new JLabel("Nick", JLabel.CENTER);
@@ -67,6 +67,9 @@ public class MainMember extends JPanel {
 		// 메뉴 패널 설정
 		pnlMenu.setBackground(Color.white);
 
+		//타이틀 변경
+		lblTitleimage.setIcon(new ImageIcon("./menber/mainMember.jpg"));
+				
 		// 계정만들기 담당 설정
 		btnStart.setBackground(Color.white);
 		btnStart.setForeground(MyColor.lightBlue);
