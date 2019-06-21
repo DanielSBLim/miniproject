@@ -57,6 +57,9 @@ public class MembershipProject extends JFrame {
 				if (loginID.getIDTextFlied().equals("")) {
 					loginID.errVis();
 					loginID.setFoucesID();
+				} else if (loginID.getIDTextFlied().contains(" ")) {
+					loginID.errVis();
+					loginID.setFoucesID();
 				} else if (false) {
 					// --------------------------------------------------------------------------------------문제
 					// 내역
@@ -89,6 +92,9 @@ public class MembershipProject extends JFrame {
 			public void onClickNext() {
 				System.out.println("다음 출력");
 				if (loginPW.getPWTextFlied().equals("")) {
+					loginPW.errVis();
+					loginPW.setFoucesPW();
+				} else if (loginPW.getPWTextFlied().contains(" ")) {
 					loginPW.errVis();
 					loginPW.setFoucesPW();
 				} else if (false) {

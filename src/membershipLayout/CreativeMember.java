@@ -84,6 +84,9 @@ public class CreativeMember extends JPanel {
 		// 메뉴 패널 설정
 		pnlMenu.setBackground(Color.white);
 
+		//타이틀 변경
+		lblTitleimage.setIcon(new ImageIcon("./menber/creatMember.jpg"));
+		
 		// 계정만들기 담당 설정
 		btnCreateId.setBackground(Color.white);
 		btnCreateId.setForeground(MyColor.lightBlue);
