@@ -12,6 +12,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import myValue.*;
 
@@ -35,7 +36,7 @@ public class LoginPW extends JPanel {
 	JLabel lblPW = new JLabel("PW", JLabel.LEFT);
 	JLabel lblPWERR = new JLabel(" ", JLabel.RIGHT);
 //	JLabel lblPWERR = new JLabel("PW를 제대로 입력하세요", JLabel.RIGHT);
-	JTextField tfPWWrite = new JTextField();
+	JPasswordField tfPWWrite = new JPasswordField();
 
 	// 나머지 빈공간 쓸만큼만 할당하고 주석처리해서 어디 위치인지 선정하기.
 	// 0, 1은 pw뒤에 빈 gird 내역

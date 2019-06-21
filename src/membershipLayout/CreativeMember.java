@@ -12,6 +12,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import myValue.*;
 
@@ -36,7 +37,7 @@ public class CreativeMember extends JPanel {
 	JLabel lblID = new JLabel("ID", JLabel.LEFT);
 	JLabel lblIDERR = new JLabel(" ", JLabel.RIGHT);
 //	JLabel lblIDERR = new JLabel("ID를  입력하세요", JLabel.RIGHT);
-	JTextField tfIDWrite = new JTextField();
+	JPasswordField tfIDWrite = new JPasswordField();
 
 	// Third
 	JPanel pnlPWWrite = new JPanel(new BorderLayout());

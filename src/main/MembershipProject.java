@@ -134,11 +134,11 @@ public class MembershipProject extends JFrame {
 
 				// ------------------------------------------------------------------------------------
 				// 쓰레드 넣기
-				remove(delMember);
-				add(loginID);
-				loginID.setFoucesID();
-				revalidate();
-				repaint();
+//				remove(delMember);
+//				add(loginID);
+//				loginID.setFoucesID();
+//				revalidate();
+//				repaint();
 
 			}
 

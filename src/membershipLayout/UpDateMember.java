@@ -12,6 +12,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import myValue.*;
 
@@ -43,7 +44,7 @@ public class UpDateMember extends JPanel {
 	JLabel lblPW = new JLabel("PW", JLabel.LEFT);
 	JLabel lblPWERR = new JLabel(" ", JLabel.RIGHT);
 //	JLabel lblPWERR = new JLabel("PW를  입력하세요", JLabel.RIGHT);
-	JTextField tfPWWrite = new JTextField();
+	JPasswordField tfPWWrite = new JPasswordField();
 
 	// fourth
 	JPanel pnlNicklWrite = new JPanel(new BorderLayout());
@@ -54,7 +55,7 @@ public class UpDateMember extends JPanel {
 
 	// 나머지 빈공간 쓸만큼만 할당하고 주석처리해서 어디 위치인지 선정하기.
 
-	// 0, 1은 id 기입할때 동쪽 서쪽 빈공간
+	// 0, grid 공백
 	// 2, 3은 pw 기입할때 동쪽 서쪽 빈공간
 	// 4, 5은 닉네임 기입할때 동쪽 서쪽 빈공간
 	JPanel[] blink = { new JPanel(), new JPanel(), new JPanel(), new JPanel(), new JPanel(), new JPanel() };
@@ -75,9 +76,9 @@ public class UpDateMember extends JPanel {
 
 	void addpnlMenuPnl() {
 		pnlmain.add(pnltitle);
-		pnlmain.add(pnlIDWrite);
 		pnlmain.add(pnlPWWrite);
 		pnlmain.add(pnlNicklWrite);
+		pnlmain.add(blink[0]);
 	}
 
 	void initViewsbeckGroundPnl() {
@@ -109,23 +110,6 @@ public class UpDateMember extends JPanel {
 		pnltitle.add(lblTitleimage);
 
 		// second
-		pnlIDWrite.setBackground(Color.white);
-		// idLabel
-		lblID.setFont(new Font("Segoe UI", Font.BOLD, 30));
-		// lblIDERR Label
-		lblIDERR.setFont(new Font("맑은고딕", Font.PLAIN, 20));
-		lblIDERR.setForeground(Color.red);
-		// blink Panel
-		blink[0].setBackground(Color.white);
-		blink[1].setBackground(Color.white);
-
-		pnlIDWrite.add(lblID, BorderLayout.NORTH);
-		pnlIDWrite.add(tfIDWrite, BorderLayout.CENTER);
-		pnlIDWrite.add(lblIDERR, BorderLayout.SOUTH);
-		pnlIDWrite.add(blink[0], BorderLayout.EAST);
-		pnlIDWrite.add(blink[1], BorderLayout.WEST);
-		
-		// Third
 		pnlPWWrite.setBackground(Color.white);
 		// idLabel
 		lblPW.setFont(new Font("Segoe UI", Font.BOLD, 30));
@@ -143,7 +127,7 @@ public class UpDateMember extends JPanel {
 		pnlPWWrite.add(blink[3], BorderLayout.WEST);
 		
 		
-		// fourth
+		// Third
 		pnlNicklWrite.setBackground(Color.white);
 		// idLabel
 		lblNick.setFont(new Font("Segoe UI", Font.BOLD, 30));
@@ -159,6 +143,9 @@ public class UpDateMember extends JPanel {
 		pnlNicklWrite.add(lblNickERR, BorderLayout.SOUTH);
 		pnlNicklWrite.add(blink[4], BorderLayout.EAST);
 		pnlNicklWrite.add(blink[5], BorderLayout.WEST);
+		
+		//Fourd
+		blink[0].setBackground(Color.white);
 
 	}
 
