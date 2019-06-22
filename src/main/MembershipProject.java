@@ -23,7 +23,7 @@ public class MembershipProject extends JFrame {
 		super("membership");
 		initViews();
 		setEvent();
-		start();
+		startPanel();
 		initWindowSetting();
 	}
 
@@ -262,7 +262,7 @@ public class MembershipProject extends JFrame {
 
 	}
 
-	void start() {
+	void startPanel() {
 		add(loginID, BorderLayout.CENTER);
 
 	}

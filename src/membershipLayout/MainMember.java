@@ -31,12 +31,12 @@ public class MainMember extends JPanel {
 	JPanel pnltitle = new JPanel(new GridLayout(1, 1));
 	JLabel lblTitleimage = new JLabel("", JLabel.CENTER);
 	// second
-	JPanel pnlIDWrite = new JPanel(new FlowLayout());
+	JPanel pnlMyNick = new JPanel(new FlowLayout());
 	JLabel lblNick = new JLabel("Nick", JLabel.CENTER);
 	JButton btnUpdate = new JButton("수정");
 
 	// Third
-	JLabel result = new JLabel("현재 수준", JLabel.CENTER);
+	JLabel lblMyLevelResult = new JLabel("현재 수준", JLabel.CENTER);
 
 	// 나머지 빈공간 쓸만큼만 할당하고 주석처리해서 어디 위치인지 선정하기.
 	// 0 은 빈 gird 내역
@@ -58,8 +58,8 @@ public class MainMember extends JPanel {
 
 	void addpnlMenuPnl() {
 		pnlmain.add(pnltitle);
-		pnlmain.add(pnlIDWrite);
-		pnlmain.add(result);
+		pnlmain.add(pnlMyNick);
+		pnlmain.add(lblMyLevelResult);
 		pnlmain.add(blink[0]);
 	}
 
@@ -90,17 +90,17 @@ public class MainMember extends JPanel {
 		pnltitle.add(lblTitleimage);
 
 		// second
-		pnlIDWrite.setBackground(Color.white);
+		pnlMyNick.setBackground(Color.white);
 		// idLabel
 		lblNick.setFont(new Font("Segoe UI", Font.BOLD, 30));
 		// lblIDERR Label
 		btnUpdate.setFont(new Font("굴림체", Font.BOLD, 20));
 		btnUpdate.setForeground(myValue.MyColor.lightBlue);
-		pnlIDWrite.add(lblNick);
-		pnlIDWrite.add(btnUpdate);
+		pnlMyNick.add(lblNick);
+		pnlMyNick.add(btnUpdate);
 
 		// Third
-		result.setFont(new Font("굴림체", Font.BOLD, 20));
+		lblMyLevelResult.setFont(new Font("굴림체", Font.BOLD, 20));
 
 	}
 

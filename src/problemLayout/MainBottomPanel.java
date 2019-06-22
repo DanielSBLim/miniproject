@@ -10,7 +10,6 @@ import javax.swing.JPanel;
 
 public class MainBottomPanel extends JPanel {
 
-	private static final Color LIGTHBLUE = new Color(49, 168, 243);
 	// 3 - 1 pnlMainInnerSouthInnerGridFirst
 	private JPanel pnlMain = new JPanel(new GridLayout(1, 1));
 	private JLabel lblAnswer = new JLabel("시작", JLabel.CENTER);
@@ -49,8 +48,8 @@ public class MainBottomPanel extends JPanel {
 		lblQna.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 30));
 		lblQnaCount.setFont(new Font("휴먼둥근헤드라인", Font.PLAIN, 14));
 
-		pnlMain.setBackground(LIGTHBLUE);
-		pnlQna.setBackground(LIGTHBLUE);
+		pnlMain.setBackground(myValue.MyColor.lightBlue);
+		pnlQna.setBackground(myValue.MyColor.lightBlue);
 		add(pnlMain);
 		add(pnlQna);
 		setPreferredSize(new Dimension(500, 60));
