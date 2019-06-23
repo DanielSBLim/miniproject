@@ -47,8 +47,8 @@ public class LoginID extends JPanel {
 		super(new BorderLayout());
 		addBeckGroundPnl();
 		addpnlMenuPnl();
-		initViewsbeckGroundPnl();
-		initViewsPnlMenuPnl();
+		createViewsbeckGroundPnl();
+		createViewsPnlMenuPnl();
 		setEvent();
 	}
 	
@@ -64,7 +64,7 @@ public class LoginID extends JPanel {
 		pnlmain.add(blink[1]);
 	}
 	
-	void initViewsbeckGroundPnl() {
+	void createViewsbeckGroundPnl() {
 		//메뉴 패널 설정
 		pnlMenu.setBackground(Color.white);
 		
@@ -94,9 +94,13 @@ public class LoginID extends JPanel {
 		
 	}
 	
-	void initViewsPnlMenuPnl() {
+	void createViewsPnlMenuPnl() {
+		
+		
 		//first
+		
 		pnltitle.add(lblTitleimage);
+		pnlmain.setBackground(Color.white);
 		
 		//second 
 		pnlIDWrite.setBackground(Color.white);

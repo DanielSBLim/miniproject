@@ -14,10 +14,10 @@ public class DelMember extends JPanel {
 	
 	public DelMember() {
 		super(new GridLayout(1, 1));
-		initViews();
+		createViews();
 	}
 	
-	private void initViews(){
+	private void createViews(){
 		setBackground(Color.white);
 		DelImage.setIcon(new ImageIcon("./menber/delMember.jpg"));
 		add(DelImage);

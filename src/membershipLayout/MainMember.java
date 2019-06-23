@@ -91,7 +91,7 @@ public class MainMember extends JPanel {
 
 		// first
 		pnltitle.add(lblTitleimage);
-
+		pnltitle.setBackground(Color.white);
 		// second
 		pnlMyNick.setBackground(Color.white);
 		// idLabel

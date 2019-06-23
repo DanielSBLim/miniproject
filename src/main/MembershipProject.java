@@ -15,7 +15,7 @@ public class MembershipProject extends JFrame {
 	private LoginID loginID = new LoginID();
 	private LoginPW loginPW = new LoginPW();
 	private	CreativeMember creativeMember = new CreativeMember();
-	private UpDateMember upDateMember = new UpDateMember();
+	private UpdateMember updateMember = new UpdateMember();
 	private DelMember delMember = new DelMember();
 	private MainMember mainMember = new MainMember();
 
@@ -123,11 +123,11 @@ public class MembershipProject extends JFrame {
 
 			}
 		});
-		upDateMember.setUserActionListener(new UpDateMember.UserActionListener() {
+		updateMember.setUserActionListener(new UpdateMember.UserActionListener() {
 
 			@Override
 			public void onClickRemove() {
-				remove(upDateMember);
+				remove(updateMember);
 				add(delMember);
 				revalidate();
 				repaint();
@@ -144,33 +144,33 @@ public class MembershipProject extends JFrame {
 
 			@Override
 			public void onClickNext() {
-				upDateMember.errVisclr();
+				updateMember.errVisclr();
 				int errFlag = 0;
 
-				if (upDateMember.getNickTextFlied().equals("")) {
-					upDateMember.errVisNick();
-					upDateMember.setFoucesNick();
+				if (updateMember.getNickTextFlied().equals("")) {
+					updateMember.errVisNick();
+					updateMember.setFoucesNick();
 					errFlag = 1;
-				} else if (upDateMember.getNickTextFlied().contains(" ")) {
-					upDateMember.errVisNick();
-					upDateMember.setFoucesNick();
+				} else if (updateMember.getNickTextFlied().contains(" ")) {
+					updateMember.errVisNick();
+					updateMember.setFoucesNick();
 					errFlag = 1;
 				}
-				if (upDateMember.getPWTextFlied().equals("")) {
-					upDateMember.errVisPW();
-					upDateMember.setFoucesPW();
+				if (updateMember.getPWTextFlied().equals("")) {
+					updateMember.errVisPW();
+					updateMember.setFoucesPW();
 					errFlag = 1;
-				} else if (upDateMember.getPWTextFlied().contains(" ")) {
-					upDateMember.errVisPW();
-					upDateMember.setFoucesPW();
+				} else if (updateMember.getPWTextFlied().contains(" ")) {
+					updateMember.errVisPW();
+					updateMember.setFoucesPW();
 					errFlag = 1;
 				}
 
 				if (errFlag == 0) {
-					upDateMember.errVisclr();
-					upDateMember.tFdclr();
+					updateMember.errVisclr();
+					updateMember.tFdclr();
 					loginID.clrtext();
-					remove(upDateMember);
+					remove(updateMember);
 					add(mainMember);
 					revalidate();
 					repaint();
@@ -247,7 +247,7 @@ public class MembershipProject extends JFrame {
 			@Override
 			public void onClickUpdate() {
 				remove(mainMember);
-				add(upDateMember);
+				add(updateMember);
 				revalidate();
 				repaint();
 			}

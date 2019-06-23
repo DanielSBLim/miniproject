@@ -52,7 +52,7 @@ public class AlgorithmProject extends JFrame {
 	public AlgorithmProject() {
 		super("알고리즘 이해");
 		dtoSetting();
-		initViews();
+		createViews();
 		setEvent();
 		initWindowSetting();
 
@@ -80,7 +80,7 @@ public class AlgorithmProject extends JFrame {
 		setResizable(true);
 	}
 
-	private void initViews() {
+	private void createViews() {
 		add(pnlTop, BorderLayout.NORTH);
 		add(pnlCenter, BorderLayout.CENTER);
 		add(pnlBottom, BorderLayout.SOUTH);

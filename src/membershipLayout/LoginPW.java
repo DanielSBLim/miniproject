@@ -47,8 +47,8 @@ public class LoginPW extends JPanel {
 		super(new BorderLayout());
 		addBeckGroundPnl();
 		addpnlMenuPnl();
-		initViewsbeckGroundPnl();
-		initViewsPnlMenuPnl();
+		createViewsbeckGroundPnl();
+		createViewsPnlMenuPnl();
 		setEvent();
 	}
 
@@ -66,13 +66,13 @@ public class LoginPW extends JPanel {
 		pnlmain.add(blink[1]);
 	}
 
-	void initViewsbeckGroundPnl() {
+	void createViewsbeckGroundPnl() {
 		// 메뉴 패널 설정
 		pnlMenu.setBackground(Color.white);
 
 		//타이틀 변경
 		lblTitleimage.setIcon(new ImageIcon("./menber/loginTitle.jpg"));
-				
+		pnltitle.setBackground(Color.white);	
 		
 		// 계정만들기 담당 설정
 		btnCreateId.setBackground(Color.white);
@@ -94,7 +94,7 @@ public class LoginPW extends JPanel {
 
 	}
 
-	void initViewsPnlMenuPnl() {
+	void createViewsPnlMenuPnl() {
 		// first
 		pnltitle.add(lblTitleimage);
 

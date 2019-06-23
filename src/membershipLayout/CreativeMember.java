@@ -30,7 +30,7 @@ public class CreativeMember extends JPanel {
 
 	// first
 	JPanel pnltitle = new JPanel(new GridLayout(1, 1));
-	JLabel lblTitleimage = new JLabel("타이틀 이미지 들어감", JLabel.CENTER);
+	JLabel lblTitleimage = new JLabel("", JLabel.CENTER);
 
 	// second
 	JPanel pnlIDWrite = new JPanel(new BorderLayout());
@@ -63,8 +63,8 @@ public class CreativeMember extends JPanel {
 		super(new BorderLayout());
 		addBeckGroundPnl();
 		addpnlMenuPnl();
-		initViewsbeckGroundPnl();
-		initViewsPnlMenuPnl();
+		createViewsbeckGroundPnl();
+		createViewsPnlMenuPnl();
 		setEvent();
 	}
 
@@ -80,7 +80,7 @@ public class CreativeMember extends JPanel {
 		pnlmain.add(pnlNicklWrite);
 	}
 
-	private void initViewsbeckGroundPnl() {
+	private void createViewsbeckGroundPnl() {
 		// 메뉴 패널 설정
 		pnlMenu.setBackground(Color.white);
 
@@ -103,10 +103,11 @@ public class CreativeMember extends JPanel {
 
 	}
 
-	private void initViewsPnlMenuPnl() {
+	private void createViewsPnlMenuPnl() {
 		// first
+		pnltitle.setBackground(Color.white);
 		pnltitle.add(lblTitleimage);
-
+		
 		// second
 		pnlIDWrite.setBackground(Color.white);
 		// idLabel
@@ -246,9 +247,9 @@ public class CreativeMember extends JPanel {
 		lblNickERR.setText(" ");
 	}
 	public void tfClr() {
-		tfIDWrite.setText(" ");
-		tfPWWrite.setText(" ");
-		tfNickWrite.setText(" ");
+		tfIDWrite.setText("");
+		tfPWWrite.setText("");
+		tfNickWrite.setText("");
 	}
 	
 

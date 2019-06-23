@@ -16,7 +16,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import myValue.*;
 
-public class UpDateMember extends JPanel {
+public class UpdateMember extends JPanel {
 
 	// Center
 	JPanel pnlmain = new JPanel(new GridLayout(4, 1));
@@ -36,14 +36,12 @@ public class UpDateMember extends JPanel {
 	JPanel pnlPWWrite = new JPanel(new BorderLayout());
 	JLabel lblPW = new JLabel("PW", JLabel.LEFT);
 	JLabel lblPWERR = new JLabel(" ", JLabel.RIGHT);
-//	JLabel lblPWERR = new JLabel("PW를  입력하세요", JLabel.RIGHT);
 	JPasswordField tfPWWrite = new JPasswordField();
 
 	// Third
 	JPanel pnlNicklWrite = new JPanel(new BorderLayout());
 	JLabel lblNick = new JLabel("NickName", JLabel.LEFT);
 	JLabel lblNickERR = new JLabel(" ", JLabel.RIGHT);
-//	JLabel lblNickERR = new JLabel("닉네임을  입력하세요", JLabel.RIGHT);
 	JTextField tfNickWrite = new JTextField();
 
 	// fourth
@@ -55,12 +53,12 @@ public class UpDateMember extends JPanel {
 	JPanel[] blink = { new JPanel(), new JPanel(), new JPanel(), new JPanel(), new JPanel(), new JPanel() };
 	private UserActionListener userActionListener;
 
-	public UpDateMember() {
+	public UpdateMember() {
 		super(new BorderLayout());
 		addBeckGroundPnl();
 		addpnlMenuPnl();
-		initViewsbeckGroundPnl();
-		initViewsPnlMenuPnl();
+		createViewsbeckGroundPnl();
+		createViewsPnlMenuPnl();
 		setEvent();
 	}
 
@@ -76,7 +74,7 @@ public class UpDateMember extends JPanel {
 		pnlmain.add(blink[0]);
 	}
 
-	void initViewsbeckGroundPnl() {
+	void createViewsbeckGroundPnl() {
 		// 메뉴 패널 설정
 		pnlMenu.setBackground(Color.white);
 
@@ -99,10 +97,10 @@ public class UpDateMember extends JPanel {
 
 	}
 
-	void initViewsPnlMenuPnl() {
+	void createViewsPnlMenuPnl() {
 		// first
 		pnltitle.add(lblTitleimage);
-
+		pnltitle.setBackground(Color.white);
 		// second
 		pnlPWWrite.setBackground(Color.white);
 		// idLabel
@@ -177,10 +175,6 @@ public class UpDateMember extends JPanel {
 		void onClickRemove();
 	}
 
-	public void allreset() {
-		tfPWWrite.setText("");
-		tfNickWrite.setText("");
-	}
 
 	public void setFoucesPW() {
 		tfPWWrite.requestFocus();
