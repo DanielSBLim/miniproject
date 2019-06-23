@@ -53,14 +53,6 @@ public class Stack {
 			}
 		}
 
-//		for (int i = print.size() - 1; i >= 0; i--) {
-//			if (print.size() == 0) {
-//				break;
-//			} else {
-//				result = print.get(i) + result;
-//			}
-//
-//		}
 		intent = result;
 	}
 }

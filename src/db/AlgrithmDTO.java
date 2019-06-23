@@ -11,7 +11,7 @@ public class AlgrithmDTO {
 		return flagbasicJumsu;
 	}
 
-	public void setFlagbasicJumsu(int flagbasicJumsu) {의미
+	public void setFlagbasicJumsu(int flagbasicJumsu) {
 
 		this.flagbasicJumsu = flagbasicJumsu;
 	}
