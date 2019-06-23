@@ -4,7 +4,6 @@ public class TwoComplement {
 
 	private String inTent;
 
-	private String result;
 
 	public String getResult() {
 		return inTent;

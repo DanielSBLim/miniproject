@@ -170,7 +170,6 @@ public class LoginPW extends JPanel {
 		return tfPWWrite.getText();
 	}
 
-
 	public void clrerrVis() {
 		lblPWERR.setText(" ");
 	}

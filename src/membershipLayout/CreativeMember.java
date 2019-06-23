@@ -37,29 +37,28 @@ public class CreativeMember extends JPanel {
 	JLabel lblID = new JLabel("ID", JLabel.LEFT);
 	JLabel lblIDERR = new JLabel(" ", JLabel.RIGHT);
 //	JLabel lblIDERR = new JLabel("ID를  입력하세요", JLabel.RIGHT);
-	JPasswordField tfIDWrite = new JPasswordField();
+	JTextField tfIDWrite = new JTextField();
 
 	// Third
 	JPanel pnlPWWrite = new JPanel(new BorderLayout());
 	JLabel lblPW = new JLabel("PW", JLabel.LEFT);
 	JLabel lblPWERR = new JLabel(" ", JLabel.RIGHT);
-//	JLabel lblPWERR = new JLabel("PW를  입력하세요", JLabel.RIGHT);
-	JTextField tfPWWrite = new JTextField();
+	JPasswordField tfPWWrite = new JPasswordField();
 
 	// fourth
 	JPanel pnlNicklWrite = new JPanel(new BorderLayout());
 	JLabel lblNick = new JLabel("NickName", JLabel.LEFT);
 	JLabel lblNickERR = new JLabel(" ", JLabel.RIGHT);
-//	JLabel lblNickERR = new JLabel("닉네임을  입력하세요", JLabel.RIGHT);
 	JTextField tfNickWrite = new JTextField();
 
 	// 나머지 빈공간 쓸만큼만 할당하고 주석처리해서 어디 위치인지 선정하기.
-
 	// 0, 1은 id 기입할때 동쪽 서쪽 빈공간
 	// 2, 3은 pw 기입할때 동쪽 서쪽 빈공간
 	// 4, 5은 닉네임 기입할때 동쪽 서쪽 빈공간
 	JPanel[] blink = { new JPanel(), new JPanel(), new JPanel(), new JPanel(), new JPanel(), new JPanel() };
 
+	private UserActionListener userActionListener;
+	
 	public CreativeMember() {
 		super(new BorderLayout());
 		addBeckGroundPnl();
@@ -69,19 +68,19 @@ public class CreativeMember extends JPanel {
 		setEvent();
 	}
 
-	void addBeckGroundPnl() {
+	private void addBeckGroundPnl() {
 		add(pnlmain, BorderLayout.CENTER);
 		add(pnlMenu, BorderLayout.SOUTH);
 	}
 
-	void addpnlMenuPnl() {
+	private void addpnlMenuPnl() {
 		pnlmain.add(pnltitle);
 		pnlmain.add(pnlIDWrite);
 		pnlmain.add(pnlPWWrite);
 		pnlmain.add(pnlNicklWrite);
 	}
 
-	void initViewsbeckGroundPnl() {
+	private void initViewsbeckGroundPnl() {
 		// 메뉴 패널 설정
 		pnlMenu.setBackground(Color.white);
 
@@ -104,7 +103,7 @@ public class CreativeMember extends JPanel {
 
 	}
 
-	void initViewsPnlMenuPnl() {
+	private void initViewsPnlMenuPnl() {
 		// first
 		pnltitle.add(lblTitleimage);
 
@@ -161,7 +160,7 @@ public class CreativeMember extends JPanel {
 
 	}
 
-	void setEvent() {
+	private void setEvent() {
 		btnCreateId.addActionListener(new ActionListener() {
 
 			@Override
@@ -186,7 +185,7 @@ public class CreativeMember extends JPanel {
 		});
 	}
 
-	private UserActionListener userActionListener;
+
 
 	public void setUserActionListener(UserActionListener l) {
 		userActionListener = l;
@@ -198,11 +197,6 @@ public class CreativeMember extends JPanel {
 		void onClickNew();
 	}
 
-	public void allreset() {
-		tfIDWrite.setText("");
-		tfPWWrite.setText("");
-		tfNickWrite.setText("");
-	}
 
 	public void setFoucesID() {
 		tfIDWrite.requestFocus();
@@ -223,7 +217,7 @@ public class CreativeMember extends JPanel {
 
 		return tfIDWrite.getText();
 	}
-
+	
 	public String getPWTextFlied() {
 
 		return tfPWWrite.getText();
@@ -251,7 +245,7 @@ public class CreativeMember extends JPanel {
 		lblPWERR.setText(" ");
 		lblNickERR.setText(" ");
 	}
-	public void tFdclr() {
+	public void tfClr() {
 		tfIDWrite.setText(" ");
 		tfPWWrite.setText(" ");
 		tfNickWrite.setText(" ");

@@ -10,7 +10,7 @@ import problemLayout.*;
 import db.*;
 
 public class AlgorithmProject extends JFrame {
-	
+
 	// 상단
 	private MainMenuPanel pnlTop = new MainMenuPanel();
 
@@ -21,36 +21,33 @@ public class AlgorithmProject extends JFrame {
 	private MainBottomPanel pnlBottom = new MainBottomPanel();
 
 	// DTO
-	private MiniProjcetDTO DTO;
+	private AlgrithmDTO DTO;
 
 	// 버튼관련
 	private int btnProblemSelect = 0;
 
-	// 힌트 관련
-
 	// 문제 관련
-
-	TwoComplement twoComplement;
-
-	private String twoComplementInputNumber = "10";
-	private String twoComplementInputType = "10";
 	private String problem1;
 	private String problem2;
+
+	private TwoComplement twoComplement;
+	private String twoComplementInputNumber = "10";
+	private String twoComplementInputType = "10";
 	private int twoComJumsu = 0;
 	private int twoComtotal = 0;
 
-	Stack stack;
+	private Stack stack;
 	private String stackInputNumber = "00001111";
 	private int stackJumsu = 0;
 	private int stacktotal = 0;
 
-	MyLRU lru;
+	private MyLRU lru;
 	private String lruInputNumber = "12345678";
 	private int lruInputCash = 1;
 	private int lruJumsu = 0;
 	private int lrutotal = 0;
 
-	MyRamdom ram = new MyRamdom();
+	private MyRamdom ram = new MyRamdom();
 
 	public AlgorithmProject() {
 		super("알고리즘 이해");
@@ -62,10 +59,19 @@ public class AlgorithmProject extends JFrame {
 	}
 
 	public void dtoSetting() {
-		DTO = new MiniProjcetDTO();
-	}
-	public MiniProjcetDTO dtoGet() {
-		return DTO;
+		DTO = new AlgrithmDTO();
+
+		if (DTO.getFlagbasicJumsu() == 1) {
+			btnProblemSelect = 1;
+			onClickMiddleSetting();
+		} else if (DTO.getFlagmiddleJumsu() == 1) {
+			btnProblemSelect = 2;
+			onClickHighSetting();
+		} else if (DTO.getFlaghighJumsu() == 1) {
+			btnProblemSelect = 2;
+			onClickHighSetting();
+		}
+
 	}
 
 	private void initWindowSetting() {
@@ -142,10 +148,9 @@ public class AlgorithmProject extends JFrame {
 
 	public void onClickBasicSetting() {
 		btnProblemSelect = 0; // 해당 문제 선택
-		DTO.setBasicJumsu(0); // 기초문제 점수 초기화
+		twoComJumsu = 0; // 기초문제 점수 초기화
 		pnlCenter.setHintImage(""); // 힌트 초기화
 		twoComtotal = 0; // 기초 전체 문제 갯수
-		twoComJumsu = 0; // 기초 문제 합격점수 초기화
 		pnlCenter.setlblMain1("10에 2의 보수는"); // 기초 문제 출력 초기화
 		pnlCenter.setlblMain2("10진수로!!"); // 기초 문제 출력 초기화
 		twoComplementInputNumber = "10"; // 기초 문제 출력 초기화 입력 숫자 초기화
@@ -156,8 +161,6 @@ public class AlgorithmProject extends JFrame {
 
 	public void onClickMiddleSetting() {
 		btnProblemSelect = 1; // 해당 문제 선택
-		DTO.setMiddleJumsu(0);
-		; // 중급문제 점수 초기화
 		pnlCenter.setHintImage(""); // 힌트 초기화
 		stackInputNumber = "00001111"; // 스텍 문제 초기화
 		stackJumsu = 0; // 스택 문제 합격점수 초기화
@@ -167,11 +170,11 @@ public class AlgorithmProject extends JFrame {
 
 		pnlBottom.setAnswer("시작"); // 정/오답 시작으로 초기화
 		pnlBottom.setQna(""); // 전체점수와 합격 점수 공란하기
+		pnlTop.middleproblemADD();
 	}
 
 	public void onClickHighSetting() {
 		btnProblemSelect = 2; // 해당 문제 선택
-		DTO.setHighJumsu(0); // 고급문제 점수 초기화
 		pnlCenter.setHintImage(""); // 힌트 초기화
 		lrutotal = 0; // 고급전체 문제 갯수
 		lruJumsu = 0; // 고급문제 합격점수 초기화
@@ -181,6 +184,8 @@ public class AlgorithmProject extends JFrame {
 		lruInputCash = 1; // 고급문제 cash 초기화 입력 숫자 초기화
 		pnlBottom.setAnswer("시작"); // 정/오답 시작으로 초기화
 		pnlBottom.setQna(""); // 전체점수와 합격 점수 공란하기
+		pnlTop.middleproblemADD();
+		pnlTop.highproblemADD();
 	}
 
 	public void onClickBasicResult() {
@@ -188,7 +193,7 @@ public class AlgorithmProject extends JFrame {
 			pnlTop.middleproblemADD();
 			btnProblemSelect = 1;
 		}
-		
+
 		System.out.println(twoComtotal);
 
 		if (twoComtotal < 5) {
@@ -197,14 +202,13 @@ public class AlgorithmProject extends JFrame {
 
 			if (twoComplement.getResult().equals(pnlCenter.getTfAnswer())) {
 				twoComJumsu++;
-				DTO.setBasicJumsu(twoComJumsu);
 				pnlBottom.setAnswer("정답");
 			} else {
 				pnlBottom.setAnswer("오답");
 
 			}
 
-			pnlBottom.setQna(DTO.getBasicJumsu() + " / " + twoComtotal);
+			pnlBottom.setQna(twoComJumsu + " / " + twoComtotal);
 
 			twoComplementInputNumber = ram.random0to16();
 			twoComplementInputType = ram.randomNumberType();
@@ -218,14 +222,14 @@ public class AlgorithmProject extends JFrame {
 		}
 
 		if (twoComtotal >= 5) {
-			if (DTO.getBasicJumsu() >= 3) {
+			if (twoComJumsu >= 3) {
 				pnlCenter.setlblMain1("합격입니다 다음등급으로");
 				pnlCenter.setlblMain2("합격입니다 다음등급으로");
 				pnlTop.middleproblemADD();
 				DTO.setFlagbasicJumsu(1);
 			} else {
 				pnlCenter.setlblMain1("불합격 다시 할려면");
-				pnlCenter.setlblMain2("중급 버튼 후 Check");
+				pnlCenter.setlblMain2("초급 버튼 후 Check");
 			}
 		}
 
@@ -235,8 +239,9 @@ public class AlgorithmProject extends JFrame {
 		if (pnlCenter.getTfAnswer().equals("skip")) {
 			btnProblemSelect = 2;
 			pnlTop.highproblemADD();
+
 		}
-		
+
 		System.out.println(stacktotal);
 
 		if (stacktotal < 5) {
@@ -245,19 +250,16 @@ public class AlgorithmProject extends JFrame {
 
 			if (stack.getResult().equals(pnlCenter.getTfAnswer())) {
 				stackJumsu++;
-				DTO.setMiddleJumsu(stackJumsu);
 				pnlBottom.setAnswer("정답");
 			} else {
 				pnlBottom.setAnswer("오답");
 
 			}
 
-			pnlBottom.setQna(DTO.getMiddleJumsu() + " / " + stacktotal);
+			pnlBottom.setQna(stackJumsu + " / " + stacktotal);
 
 			stackInputNumber = ram.randomOneCell0to1();
 			problem1 = "1234를 스텍으로 처리 !";
-			
-			
 			problem2 = binExchangePushPop(stackInputNumber) + "이면";
 			pnlCenter.setlblMain1(problem1);
 			pnlCenter.setlblMain2(problem2);
@@ -267,22 +269,23 @@ public class AlgorithmProject extends JFrame {
 		}
 
 		if (stacktotal >= 5) {
-			if (DTO.getMiddleJumsu() >= 3) {
+			if (stackJumsu >= 3) {
 				pnlCenter.setlblMain1("합격입니다 다음등급으로");
 				pnlCenter.setlblMain2("합격입니다 다음등급으로");
 				DTO.setFlagmiddleJumsu(1);
 				pnlTop.highproblemADD();
 			} else {
 				pnlCenter.setlblMain1("불합격 다시 할려면");
-				pnlCenter.setlblMain2("고급 버튼 후 Check");
+				pnlCenter.setlblMain2("중급 버튼 후 Check");
 			}
 		}
 	}
+
 	private String binExchangePushPop(String getData) {
-		char[] charArrayGetData =  getData.toCharArray();
+		char[] charArrayGetData = getData.toCharArray();
 		String binExchangePushPop = "";
-		for(int i = 0; i < charArrayGetData.length; i++) {
-			if(charArrayGetData[i]=='0') {
+		for (int i = 0; i < charArrayGetData.length; i++) {
+			if (charArrayGetData[i] == '0') {
 				binExchangePushPop = binExchangePushPop + "Push";
 			} else {
 				binExchangePushPop = binExchangePushPop + "Pop";
@@ -290,35 +293,32 @@ public class AlgorithmProject extends JFrame {
 		}
 		return binExchangePushPop;
 	}
-	
-	
+
 	public void onClickHighResult() {
-		
+
 		System.out.println(lrutotal);
-		if(pnlCenter.getTfAnswer().equals("답")) {
-			lrutotal = 4;
-			DTO.setHighJumsu(4);
+		if (pnlCenter.getTfAnswer().equals("답")) {
+			lruJumsu = 4;
 		}
-		
+
 		if (lrutotal < 5) {
 			lrutotal++;
 			lru = new MyLRU(lruInputNumber, lruInputCash);
 
 			if (lru.getResult().equals(pnlCenter.getTfAnswer())) {
 				lruJumsu++;
-				DTO.setHighJumsu(lruJumsu);
 				pnlBottom.setAnswer("정답");
 			} else {
 				pnlBottom.setAnswer("오답");
 
 			}
 
-			pnlBottom.setQna(DTO.getHighJumsu() + " / " + lrutotal);
+			pnlBottom.setQna(lruJumsu + " / " + lrutotal);
 
 			lruInputNumber = ram.random100000000to99999999();
 			lruInputCash = ram.random0to10();
 			problem1 = "LRU처리 시간 ";
-			problem2 = lruInputNumber + "값을" + lruInputCash +"이면 (miss 5초, hit 1초)";
+			problem2 = lruInputNumber + "값을" + lruInputCash + "이면 (miss 5초, hit 1초)";
 			pnlCenter.setlblMain1(problem1);
 			pnlCenter.setlblMain2(problem2);
 
@@ -327,7 +327,7 @@ public class AlgorithmProject extends JFrame {
 		}
 
 		if (lrutotal >= 5) {
-			if (DTO.getHighJumsu() >= 3) {
+			if (lruJumsu >= 3) {
 				pnlCenter.setlblMain1("합격입니다");
 				pnlCenter.setlblMain2("합격입니다 고생하셨습니다");
 				DTO.setFlaghighJumsu(1);

@@ -18,17 +18,17 @@ import javax.swing.JTextField;
 
 public class MainCenterPanel extends JPanel {
 
-	private final static int FIRST = 0;
-	private final static int SECOND = 1;
-	private final static int THIRD = 2;
-	private final static int FOURD = 3;
-	private final static String addrUpimage = "./mini/BoradUp.jpg";
-	private final static String addrDownimage = "./mini/BoradDown.jpg";
-	private final static String addrHINT = "./mini/HINT.jpg";
-	private final static String addrCHECK = "./mini/CHECK.jpg";
+	private final  int FIRST = 0;
+	private final  int SECOND = 1;
+	private final  int THIRD = 2;
+	private final  int FOURD = 3;
+	private final  String addrUpimage = "./mini/BoradUp.jpg";
+	private final  String addrDownimage = "./mini/BoradDown.jpg";
+	private final  String addrHINT = "./mini/HINT.jpg";
+	private final  String addrCHECK = "./mini/CHECK.jpg";
 
 	// 2 - 1 pnlArrayMainInnerCenterInnerGrid[] = new [4]
-	private JPanel pnlGridMain[] = { new JPanel(new GridLayout(1, 1)), new JPanel(new GridLayout(1, 1)),
+	private JPanel[] pnlGridMain = { new JPanel(new GridLayout(1, 1)), new JPanel(new GridLayout(1, 1)),
 			new JPanel(new GridLayout(2, 1)), new JPanel(new BorderLayout()) };
 
 	// 2 - 1 - 1 lblMainInnerCenterInnerGrid[0]

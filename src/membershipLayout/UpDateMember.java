@@ -33,32 +33,27 @@ public class UpDateMember extends JPanel {
 	JLabel lblTitleimage = new JLabel("", JLabel.CENTER);
 
 	// second
-	JPanel pnlIDWrite = new JPanel(new BorderLayout());
-	JLabel lblID = new JLabel("ID", JLabel.LEFT);
-	JLabel lblIDERR = new JLabel(" ", JLabel.RIGHT);
-//	JLabel lblIDERR = new JLabel("ID를  입력하세요", JLabel.RIGHT);
-	JTextField tfIDWrite = new JTextField();
-
-	// Third
 	JPanel pnlPWWrite = new JPanel(new BorderLayout());
 	JLabel lblPW = new JLabel("PW", JLabel.LEFT);
 	JLabel lblPWERR = new JLabel(" ", JLabel.RIGHT);
 //	JLabel lblPWERR = new JLabel("PW를  입력하세요", JLabel.RIGHT);
 	JPasswordField tfPWWrite = new JPasswordField();
 
-	// fourth
+	// Third
 	JPanel pnlNicklWrite = new JPanel(new BorderLayout());
 	JLabel lblNick = new JLabel("NickName", JLabel.LEFT);
 	JLabel lblNickERR = new JLabel(" ", JLabel.RIGHT);
 //	JLabel lblNickERR = new JLabel("닉네임을  입력하세요", JLabel.RIGHT);
 	JTextField tfNickWrite = new JTextField();
 
+	// fourth
 	// 나머지 빈공간 쓸만큼만 할당하고 주석처리해서 어디 위치인지 선정하기.
 
 	// 0, grid 공백
 	// 2, 3은 pw 기입할때 동쪽 서쪽 빈공간
 	// 4, 5은 닉네임 기입할때 동쪽 서쪽 빈공간
 	JPanel[] blink = { new JPanel(), new JPanel(), new JPanel(), new JPanel(), new JPanel(), new JPanel() };
+	private UserActionListener userActionListener;
 
 	public UpDateMember() {
 		super(new BorderLayout());
@@ -85,9 +80,9 @@ public class UpDateMember extends JPanel {
 		// 메뉴 패널 설정
 		pnlMenu.setBackground(Color.white);
 
-		//타이틀 변경
+		// 타이틀 변경
 		lblTitleimage.setIcon(new ImageIcon("./menber/updateMember.jpg"));
-				
+
 		// 계정만들기 담당 설정
 		btnCreateId.setBackground(Color.white);
 		btnCreateId.setForeground(MyColor.lightBlue);
@@ -98,7 +93,6 @@ public class UpDateMember extends JPanel {
 		btnNext.setBackground(Color.white);
 		btnNext.setForeground(MyColor.lightBlue);
 		btnNext.setFont(new Font("굴림체", Font.BOLD, 20));
-
 
 		pnlMenu.add(btnCreateId, BorderLayout.WEST);
 		pnlMenu.add(btnNext, BorderLayout.EAST);
@@ -125,8 +119,7 @@ public class UpDateMember extends JPanel {
 		pnlPWWrite.add(lblPWERR, BorderLayout.SOUTH);
 		pnlPWWrite.add(blink[2], BorderLayout.EAST);
 		pnlPWWrite.add(blink[3], BorderLayout.WEST);
-		
-		
+
 		// Third
 		pnlNicklWrite.setBackground(Color.white);
 		// idLabel
@@ -143,8 +136,8 @@ public class UpDateMember extends JPanel {
 		pnlNicklWrite.add(lblNickERR, BorderLayout.SOUTH);
 		pnlNicklWrite.add(blink[4], BorderLayout.EAST);
 		pnlNicklWrite.add(blink[5], BorderLayout.WEST);
-		
-		//Fourd
+
+		// Fourd
 		blink[0].setBackground(Color.white);
 
 	}
@@ -174,8 +167,6 @@ public class UpDateMember extends JPanel {
 		});
 	}
 
-	private UserActionListener userActionListener;
-
 	public void setUserActionListener(UserActionListener l) {
 		userActionListener = l;
 	}
@@ -185,16 +176,10 @@ public class UpDateMember extends JPanel {
 
 		void onClickRemove();
 	}
-	
+
 	public void allreset() {
-		tfIDWrite.setText("");
 		tfPWWrite.setText("");
 		tfNickWrite.setText("");
-	}
-
-	public void setFoucesID() {
-		tfIDWrite.requestFocus();
-		tfIDWrite.setFocusable(true);
 	}
 
 	public void setFoucesPW() {
@@ -207,11 +192,6 @@ public class UpDateMember extends JPanel {
 		tfNickWrite.setFocusable(true);
 	}
 
-	public String getIDTextFlied() {
-
-		return tfIDWrite.getText();
-	}
-
 	public String getPWTextFlied() {
 
 		return tfPWWrite.getText();
@@ -220,10 +200,6 @@ public class UpDateMember extends JPanel {
 	public String getNickTextFlied() {
 
 		return tfNickWrite.getText();
-	}
-
-	public void errVisID() {
-		lblIDERR.setText(" ID를 제대로 입력하세요");
 	}
 
 	public void errVisPW() {
@@ -235,12 +211,11 @@ public class UpDateMember extends JPanel {
 	}
 
 	public void errVisclr() {
-		lblIDERR.setText(" ");
 		lblPWERR.setText(" ");
 		lblNickERR.setText(" ");
 	}
+
 	public void tFdclr() {
-		tfIDWrite.setText(" ");
 		tfPWWrite.setText(" ");
 		tfNickWrite.setText(" ");
 	}

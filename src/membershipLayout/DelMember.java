@@ -10,7 +10,7 @@ import javax.swing.JPanel;
 
 public class DelMember extends JPanel {
 	
-	JLabel DelImage = new JLabel("", JLabel.CENTER);
+	private JLabel DelImage = new JLabel("", JLabel.CENTER);
 	
 	public DelMember() {
 		super(new GridLayout(1, 1));

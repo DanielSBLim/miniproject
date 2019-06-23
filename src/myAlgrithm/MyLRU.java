@@ -14,10 +14,6 @@ public class MyLRU {
 		return result;
 	}
 
-	public void setResult(String result) {
-		this.result = result;
-	}
-
 	public void myLRU(String getInputData, int cahes) {
 
 		if (cahes == 0) {

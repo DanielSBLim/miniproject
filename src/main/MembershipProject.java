@@ -11,15 +11,15 @@ import membershipLayout.*;
 
 public class MembershipProject extends JFrame {
 
-	JPanel[] emtpy = { new JPanel(), new JPanel(), new JPanel(), new JPanel() };
-	LoginID loginID = new LoginID();
-	LoginPW loginPW = new LoginPW();
-	CreativeMember creativeMember = new CreativeMember();
-	UpDateMember upDateMember = new UpDateMember();
-	DelMember delMember = new DelMember();
-	MainMember mainMember = new MainMember();
+	private JPanel[] emtpy = { new JPanel(), new JPanel(), new JPanel(), new JPanel() };
+	private LoginID loginID = new LoginID();
+	private LoginPW loginPW = new LoginPW();
+	private	CreativeMember creativeMember = new CreativeMember();
+	private UpDateMember upDateMember = new UpDateMember();
+	private DelMember delMember = new DelMember();
+	private MainMember mainMember = new MainMember();
 
-	MembershipProject() {
+	public MembershipProject() {
 		super("membership");
 		initViews();
 		setEvent();
@@ -27,7 +27,7 @@ public class MembershipProject extends JFrame {
 		initWindowSetting();
 	}
 
-	void initViews() {
+	private void initViews() {
 
 		emtpy[0].setBackground(Color.white);
 		emtpy[0].setPreferredSize(new Dimension(63, 700));
@@ -42,7 +42,7 @@ public class MembershipProject extends JFrame {
 		add(emtpy[3], BorderLayout.NORTH);
 	}
 
-	void initWindowSetting() {
+	private void initWindowSetting() {
 		setSize(500, 700);
 		setVisible(true);
 		setResizable(false);
@@ -165,15 +165,6 @@ public class MembershipProject extends JFrame {
 					upDateMember.setFoucesPW();
 					errFlag = 1;
 				}
-				if (upDateMember.getIDTextFlied().equals("")) {
-					upDateMember.errVisID();
-					upDateMember.setFoucesID();
-					errFlag = 1;
-				} else if (upDateMember.getIDTextFlied().contains(" ")) {
-					upDateMember.errVisID();
-					upDateMember.setFoucesID();
-					errFlag = 1;
-				}
 
 				if (errFlag == 0) {
 					upDateMember.errVisclr();
@@ -222,9 +213,11 @@ public class MembershipProject extends JFrame {
 					creativeMember.setFoucesID();
 					errFlag = 1;
 				}
+				
+				
 				if (errFlag == 0) {
 					creativeMember.errVisclr();
-					creativeMember.tFdclr();
+					creativeMember.tfClr();
 					loginID.clrtext();
 					remove(creativeMember);
 					add(loginID);
@@ -237,7 +230,7 @@ public class MembershipProject extends JFrame {
 			@Override
 			public void onClickNew() {
 				creativeMember.errVisclr();
-				creativeMember.allreset();
+				creativeMember.tfClr();
 				creativeMember.setFoucesID();
 
 			}
@@ -262,7 +255,7 @@ public class MembershipProject extends JFrame {
 
 	}
 
-	void startPanel() {
+	private void startPanel() {
 		add(loginID, BorderLayout.CENTER);
 
 	}

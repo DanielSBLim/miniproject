@@ -19,28 +19,31 @@ import myValue.*;
 public class MainMember extends JPanel {
 
 	// Center
-	JPanel pnlmain = new JPanel(new GridLayout(4, 1));
+	private JPanel pnlmain = new JPanel(new GridLayout(4, 1));
 
 	// South
-	JPanel pnlMenu = new JPanel(new FlowLayout());
-	JButton btnStart = new JButton("문제시작");
+	private JPanel pnlMenu = new JPanel(new FlowLayout());
+	private JButton btnStart = new JButton("문제시작");
 
 	// Center inner
 
 	// first
-	JPanel pnltitle = new JPanel(new GridLayout(1, 1));
-	JLabel lblTitleimage = new JLabel("", JLabel.CENTER);
+	private JPanel pnltitle = new JPanel(new GridLayout(1, 1));
+	private JLabel lblTitleimage = new JLabel("", JLabel.CENTER);
 	// second
-	JPanel pnlMyNick = new JPanel(new FlowLayout());
-	JLabel lblNick = new JLabel("Nick", JLabel.CENTER);
-	JButton btnUpdate = new JButton("수정");
+	private JPanel pnlMyNick = new JPanel(new FlowLayout());
+	private JLabel lblNick = new JLabel("Nick", JLabel.CENTER);
+	private JButton btnUpdate = new JButton("수정");
 
 	// Third
-	JLabel lblMyLevelResult = new JLabel("현재 수준", JLabel.CENTER);
+	private JLabel lblMyLevelResult = new JLabel("현재 수준", JLabel.CENTER);
 
 	// 나머지 빈공간 쓸만큼만 할당하고 주석처리해서 어디 위치인지 선정하기.
 	// 0 은 빈 gird 내역
-	JPanel[] blink = { new JPanel() };
+	private JPanel[] blink = { new JPanel() };
+	
+	private UserActionListener userActionListener;
+	
 
 	public MainMember() {
 		super(new BorderLayout());
@@ -129,8 +132,6 @@ public class MainMember extends JPanel {
 		});
 
 	}
-
-	private UserActionListener userActionListener;
 
 	public void setUserActionListener(UserActionListener l) {
 		userActionListener = l;

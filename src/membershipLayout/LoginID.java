@@ -20,7 +20,6 @@ public class LoginID extends JPanel {
 	//Center
 	JPanel pnlmain = new JPanel(new GridLayout(4, 1));
 
-	
 	//South
 		JPanel pnlMenu = new JPanel(new BorderLayout());
 		JButton btnCreateId = new JButton("계정만들기");
@@ -36,7 +35,7 @@ public class LoginID extends JPanel {
 	JLabel lblID = new JLabel("ID", JLabel.LEFT);
 	JLabel lblIDERR = new JLabel(" ", JLabel.RIGHT);
 	JTextField tfIDWrite = new JTextField();
-//	JLabel lblIDERR = new JLabel(" id를 제대로 입력하세요", JLabel.CENTER);
+	//	JLabel lblIDERR = new JLabel(" id를 제대로 입력하세요", JLabel.CENTER);
 	
 	// 나머지 빈공간 쓸만큼만 할당하고 주석처리해서 어디 위치인지 선정하기.
 	// 0, 1은 아이디뒤에 빈 gird 내역 

@@ -19,7 +19,6 @@ public class MainMenuPanel extends JPanel {
 	private JPanel pnlGrade = new JPanel(new GridLayout(1, 3));
 	private JButton[] btnsGradeList = { new JButton(), new JButton(), new JButton() };
 
-	private JPanel pnlScore = new JPanel(new GridLayout(1, 1));
 
 	private final String ImageAddrHighLevel = "./mini/highLevel.jpg";
 	private final String ImageAddrMeddleLevel = "./mini/middleLevel.jpg";
@@ -59,7 +58,6 @@ public class MainMenuPanel extends JPanel {
 		// East
 		
 		
-		add(pnlScore, BorderLayout.EAST);
 	}
 
 	private void setEvent() {
