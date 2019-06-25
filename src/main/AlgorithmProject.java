@@ -223,7 +223,7 @@ public class AlgorithmProject extends JFrame {
 
 			pnlBottom.setQna(twoComJumsu + " / " + twoComtotal);
 
-			twoComplementInputNumber = ram.random0to16();
+			twoComplementInputNumber = ram.random8to16();
 			twoComplementInputType = ram.randomNumberType();
 			problem1 = twoComplementInputNumber + "에 2의 보수는 ?";
 			problem2 = twoComplementInputType + "진수로!";

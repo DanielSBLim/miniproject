@@ -6,11 +6,11 @@ public class MyRamdom {
 
 	// TwoComplement
 	// 1~ 16까지 하는 랜덤 메소드
-	public String random0to16() {
+	public String random8to16() {
 
 		Random ram = new Random();
 
-		return Integer.toString((ram.nextInt(16)));
+		return Integer.toString(8+(ram.nextInt(5)));
 
 	}
 

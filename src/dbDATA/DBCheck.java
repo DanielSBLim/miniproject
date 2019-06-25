@@ -110,7 +110,7 @@ public class DBCheck {
 		int su = 0;
 
 		try {
-			String sql = "update Member set pw = '" + getPW + "', nick = '" + getNick + "' where id'" + getID + "' ";
+			String sql = "update Member set pw = '" + getPW + "', nick = '" + getNick + "' where id='" + getID + "' ";
 			conn = DBConnection.getConnection();
 			stmt = conn.createStatement();
 			su = stmt.executeUpdate(sql);
