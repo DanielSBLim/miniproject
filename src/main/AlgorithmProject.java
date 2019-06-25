@@ -1,13 +1,15 @@
 package main;
 
 import java.awt.BorderLayout;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 
 import javax.swing.JFrame;
 
+import dbDATA.*;
 import myAlgrithm.*;
 import problemLayout.*;
-import db.*;
 
 public class AlgorithmProject extends JFrame {
 
@@ -21,7 +23,7 @@ public class AlgorithmProject extends JFrame {
 	private MainBottomPanel pnlBottom = new MainBottomPanel();
 
 	// DTO
-	private AlgrithmDTO DTO;
+	private MiniDTO DTO;
 
 	// 버튼관련
 	private int btnProblemSelect = 0;
@@ -49,25 +51,27 @@ public class AlgorithmProject extends JFrame {
 
 	private MyRamdom ram = new MyRamdom();
 
-	public AlgorithmProject() {
+	public AlgorithmProject(MiniDTO dto) {
 		super("알고리즘 이해");
-		dtoSetting();
+		dtoSetting(dto);
 		createViews();
 		setEvent();
 		initWindowSetting();
 
 	}
 
-	public void dtoSetting() {
-		DTO = new AlgrithmDTO();
+	public void dtoSetting(MiniDTO dto) {
+		DTO = dto;
 
-		if (DTO.getFlagbasicJumsu() == 1) {
+		if (DTO.getComplete_Problem_Check() == 1) {
 			btnProblemSelect = 1;
 			onClickMiddleSetting();
-		} else if (DTO.getFlagmiddleJumsu() == 1) {
+		} 
+		if (DTO.getMiddel_Problem_Check() == 1) {
 			btnProblemSelect = 2;
 			onClickHighSetting();
-		} else if (DTO.getFlaghighJumsu() == 1) {
+		} 
+		if (DTO.getBase_Problem_Check() == 1) {
 			btnProblemSelect = 2;
 			onClickHighSetting();
 		}
@@ -87,6 +91,14 @@ public class AlgorithmProject extends JFrame {
 	}
 
 	private void setEvent() {
+		addWindowListener(new WindowAdapter() {
+			 public void windowClosing(WindowEvent e) {
+				 DBCheck.dbGameInsert(DTO.getBase_Problem_Check(),  DTO.getMiddel_Problem_Check(), 
+						 DTO.getComplete_Problem_Check(), DTO.getId());
+			 }
+			
+		});
+		
 		pnlTop.setUserActionListener(new MainMenuPanel.UserActionListener() {
 
 			@Override
@@ -192,6 +204,7 @@ public class AlgorithmProject extends JFrame {
 		if (pnlCenter.getTfAnswer().equals("skip")) {
 			pnlTop.middleproblemADD();
 			btnProblemSelect = 1;
+			DTO.setMiddel_Problem_Check(1);
 		}
 
 		System.out.println(twoComtotal);
@@ -226,7 +239,7 @@ public class AlgorithmProject extends JFrame {
 				pnlCenter.setlblMain1("합격입니다 다음등급으로");
 				pnlCenter.setlblMain2("합격입니다 다음등급으로");
 				pnlTop.middleproblemADD();
-				DTO.setFlagbasicJumsu(1);
+				DTO.setBase_Problem_Check(1);
 			} else {
 				pnlCenter.setlblMain1("불합격 다시 할려면");
 				pnlCenter.setlblMain2("초급 버튼 후 Check");
@@ -239,6 +252,7 @@ public class AlgorithmProject extends JFrame {
 		if (pnlCenter.getTfAnswer().equals("skip")) {
 			btnProblemSelect = 2;
 			pnlTop.highproblemADD();
+			DTO.setMiddel_Problem_Check(1);
 
 		}
 
@@ -272,7 +286,7 @@ public class AlgorithmProject extends JFrame {
 			if (stackJumsu >= 3) {
 				pnlCenter.setlblMain1("합격입니다 다음등급으로");
 				pnlCenter.setlblMain2("합격입니다 다음등급으로");
-				DTO.setFlagmiddleJumsu(1);
+				DTO.setMiddel_Problem_Check(1);
 				pnlTop.highproblemADD();
 			} else {
 				pnlCenter.setlblMain1("불합격 다시 할려면");
@@ -330,7 +344,7 @@ public class AlgorithmProject extends JFrame {
 			if (lruJumsu >= 3) {
 				pnlCenter.setlblMain1("합격입니다");
 				pnlCenter.setlblMain2("합격입니다 고생하셨습니다");
-				DTO.setFlaghighJumsu(1);
+				DTO.setComplete_Problem_Check(1);
 			} else {
 				pnlCenter.setlblMain1("불합격 다시 할려면");
 				pnlCenter.setlblMain2("고급 버튼 후 Check");

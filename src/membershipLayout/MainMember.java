@@ -143,5 +143,14 @@ public class MainMember extends JPanel {
 
 		public void onClickUpdate();
 	}
+	
+	public void setlblNick(String setNick) {
+		
+		lblNick.setText(setNick);
+	}
+	
+	public void setlblMyLevelResult(String setLevelResult) {
+		lblMyLevelResult.setText(setLevelResult);
+	}
 
 }

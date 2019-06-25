@@ -213,5 +213,13 @@ public class UpdateMember extends JPanel {
 		tfPWWrite.setText(" ");
 		tfNickWrite.setText(" ");
 	}
+	public void setTFPW(String setString) {
+		tfPWWrite.setText(setString);
+	}
+	
+	public void setTFNick(String setString) {
+		tfNickWrite.setText(setString);
+	}
+	
 
 }

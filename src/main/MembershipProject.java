@@ -3,10 +3,13 @@ package main;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import dbDATA.*;
 import membershipLayout.*;
 
 public class MembershipProject extends JFrame {
@@ -18,6 +21,10 @@ public class MembershipProject extends JFrame {
 	private UpdateMember updateMember = new UpdateMember();
 	private DelMember delMember = new DelMember();
 	private MainMember mainMember = new MainMember();
+	private TimerTask mTimeTsak;
+	private Timer mTimer = new Timer();
+	private MiniDTO dto = new MiniDTO();
+	
 
 	public MembershipProject() {
 		super("membership");
@@ -60,11 +67,12 @@ public class MembershipProject extends JFrame {
 				} else if (loginID.getIDTextFlied().contains(" ")) {
 					loginID.errVis();
 					loginID.setFoucesID();
-				} else if (false) {
-					// --------------------------------------------------------------------------------------문제
-					// 내역
+				} else if (!(DBCheck.dbIDSelect(loginID.getIDTextFlied()).equals(loginID.getIDTextFlied()))) {
+					loginID.errVis();
+					loginID.setFoucesID();
+					
 				} else {
-
+					dto = DBCheck.dbSelectDTOSettion(loginID.getIDTextFlied());
 					loginID.clrerrVis();
 					loginID.clrtext();
 					remove(loginID);
@@ -91,24 +99,46 @@ public class MembershipProject extends JFrame {
 			@Override
 			public void onClickNext() {
 				System.out.println("다음 출력");
+				System.out.println(dto.getPw());
 				if (loginPW.getPWTextFlied().equals("")) {
 					loginPW.errVis();
 					loginPW.setFoucesPW();
 				} else if (loginPW.getPWTextFlied().contains(" ")) {
 					loginPW.errVis();
 					loginPW.setFoucesPW();
-				} else if (false) {
-					// --------------------------------------------------------------------------------------문제
-					// 내역
+				} else if (!(dto.getPw().equals(loginPW.getPWTextFlied()))) {
+					loginPW.errVis();
+					loginPW.setFoucesPW();
 				} else {
-
+					if(dto.getComplete_Problem_Check() == 1) {
+						
+					} else if (dto.getMiddel_Problem_Check() == 1) {
+						
+					} else if (dto.getBase_Problem_Check() == 1) {
+						
+					} else {
+						
+					}
+					mainMember.setlblNick(dto.getNickName());
 					loginPW.clrerrVis();
 					loginPW.clrtext();
-
+					
+					mainMember.setlblMyLevelResult("입문자");
+					if(dto.getBase_Problem_Check() == 1) {
+						mainMember.setlblMyLevelResult("중급자");
+					}
+					if(dto.getMiddel_Problem_Check() == 1) {
+						mainMember.setlblMyLevelResult("고급자");
+					} 
+					if(dto.getComplete_Problem_Check() == 1) {
+						mainMember.setlblMyLevelResult("합격자");
+					}
+					
 					remove(loginPW);
 					add(mainMember);
 					revalidate();
 					repaint();
+					
 				}
 
 			}
@@ -131,14 +161,21 @@ public class MembershipProject extends JFrame {
 				add(delMember);
 				revalidate();
 				repaint();
-
-				// ------------------------------------------------------------------------------------
-				// 쓰레드 넣기
-//				remove(delMember);
-//				add(loginID);
-//				loginID.setFoucesID();
-//				revalidate();
-//				repaint();
+				DBCheck.dbDelete(dto.getId());
+				
+				mTimeTsak = new TimerTask() {
+					
+					@Override
+					public void run() {
+						remove(delMember);
+						add(loginID);
+						loginID.setFoucesID();
+						revalidate();
+						repaint();
+						
+					}
+				};
+				mTimer.schedule(mTimeTsak, 3000);
 
 			}
 
@@ -167,6 +204,10 @@ public class MembershipProject extends JFrame {
 				}
 
 				if (errFlag == 0) {
+					DBCheck.dbMemberUpdate(updateMember.getPWTextFlied(), updateMember.getNickTextFlied(), dto.getId());
+					dto.setNickName(updateMember.getNickTextFlied());
+					dto.setPw(updateMember.getPWTextFlied());
+					mainMember.setlblNick(updateMember.getNickTextFlied());
 					updateMember.errVisclr();
 					updateMember.tFdclr();
 					loginID.clrtext();
@@ -216,6 +257,7 @@ public class MembershipProject extends JFrame {
 				
 				
 				if (errFlag == 0) {
+					DBCheck.dbNewMemberInsert(creativeMember.getIDTextFlied(), creativeMember.getPWTextFlied(), creativeMember.getNickTextFlied());
 					creativeMember.errVisclr();
 					creativeMember.tfClr();
 					loginID.clrtext();
@@ -239,7 +281,7 @@ public class MembershipProject extends JFrame {
 		mainMember.setUserActionListener(new MainMember.UserActionListener() {
 			@Override
 			public void onClickStart() {
-				new AlgorithmProject();
+				new AlgorithmProject(dto);
 				setVisible(false);
 
 			}
@@ -250,6 +292,8 @@ public class MembershipProject extends JFrame {
 				add(updateMember);
 				revalidate();
 				repaint();
+				updateMember.setTFPW(dto.getPw());
+				updateMember.setTFNick(dto.getNickName());
 			}
 		});
 
